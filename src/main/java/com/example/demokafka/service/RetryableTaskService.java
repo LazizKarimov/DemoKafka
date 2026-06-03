@@ -47,9 +47,15 @@ public class RetryableTaskService {
                 pageable
         );
 
-        for(RetryableTask retryableTask : retryableTasks){
+        for (RetryableTask retryableTask : retryableTasks) {
             retryableTask.setRetryaTime(currentTime.plus(Duration.ofSeconds(timeoutInSeconds)));
         }
         return retryableTasks;
+    }
+
+
+    @Transactional
+    public void markRetryableTasksAsCompleted(List<RetryableTask> retryableTasks) {
+        retryableTaskRepository.updateRetryableTasks(retryableTasks, RetryableTaskStatus.SUCCESS);
     }
 }

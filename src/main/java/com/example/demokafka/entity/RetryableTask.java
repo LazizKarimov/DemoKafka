@@ -11,6 +11,7 @@ import org.hibernate.annotations.ColumnTransformer;
 import java.time.Instant;
 
 @Entity
+@Getter
 public class RetryableTask extends BaseEntity{
 
     @Column(columnDefinition = "jsonb")

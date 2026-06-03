@@ -25,4 +25,7 @@ public interface RetryableTaskRepository extends CrudRepository<RetryableTask, U
     )
     List<RetryableTask> findRetryableTaskForProcessing(RetryableTaskType type, Instant retryTime,
                                                        RetryableTaskStatus status, Pageable pageable);
+
+    @Query("UPDATE RetryableTask r SET r.status= :status where r.id in :retryableTasks")
+    void updateRetryableTasks(List<RetryableTask> retryableTasks, RetryableTaskStatus status);
 }

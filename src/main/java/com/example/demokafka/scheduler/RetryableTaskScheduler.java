@@ -2,6 +2,8 @@ package com.example.demokafka.scheduler;
 
 import com.example.demokafka.entity.RetryableTask;
 import com.example.demokafka.enums.RetryableTaskType;
+import com.example.demokafka.mapper.RetryableTaskMapper;
+import com.example.demokafka.service.DeliveryService;
 import com.example.demokafka.service.RetryableTaskService;
 import com.example.demokafka.service.retryable.RetryableTaskProcessor;
 import com.example.demokafka.service.retryable.SendCreateDeliveryRequestRetryableTaskProcessor;
@@ -20,6 +22,9 @@ import java.util.Map;
 public class RetryableTaskScheduler {
 
     private final RetryableTaskService retryableTaskService;
+    private final RetryableTaskMapper retryableTaskMapper;
+    private final DeliveryService deliveryService;
+
     private final Map<RetryableTaskType, RetryableTaskProcessor> taskProcessors = Map.of(
             RetryableTaskType.SEND_CREATE_DELIVERY_REQUEST, new SendCreateDeliveryRequestRetryableTaskProcessor(),
             RetryableTaskType.SEND_CREATE_NOTIFICATION_REQUEST, new SendCreateNotificationRequestRetryableTaskProcessor()

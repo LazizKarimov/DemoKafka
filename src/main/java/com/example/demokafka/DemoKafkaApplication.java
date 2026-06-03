@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
+@EnableFeignClients
 public class DemoKafkaApplication {
 
     public static void main(String[] args) {
