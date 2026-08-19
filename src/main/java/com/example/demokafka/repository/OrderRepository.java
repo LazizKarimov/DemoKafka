@@ -1,7 +1,11 @@
 package com.example.demokafka.repository;
 
+import com.example.demokafka.entity.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
-public class OrderRepository {
+public interface OrderRepository extends JpaRepository<Order, UUID> {
 }

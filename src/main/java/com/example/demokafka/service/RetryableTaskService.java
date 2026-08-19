@@ -48,7 +48,7 @@ public class RetryableTaskService {
         );
 
         for (RetryableTask retryableTask : retryableTasks) {
-            retryableTask.setRetryaTime(currentTime.plus(Duration.ofSeconds(timeoutInSeconds)));
+            retryableTask.setRetryTime(currentTime.plus(Duration.ofSeconds(timeoutInSeconds)));
         }
         return retryableTasks;
     }
